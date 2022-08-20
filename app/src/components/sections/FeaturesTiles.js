@@ -45,7 +45,7 @@ const FeaturesTiles = ({
   const sectionHeader = {
     title: "We support a multitude of chains/networks...",
     paragraph:
-      "Ethereum (Mainnet/Goerli), Polygon (Mainnet/Mumbai), Gnosis (Mainnet/Testnet), Optimism (Mainnet/Kovan/Goerli), Arbitrum (Mainnet/Rinkeby) Superfluid (ALL SUBGRAPHS!!!) and more!",
+      "Ethereum (Mainnet/Goerli), Polygon (Mainnet/Mumbai), Gnosis (Mainnet/Testnet), Optimism (Mainnet/Kovan/Goerli), Arbitrum (Mainnet/Rinkeby), Superfluid (ALL networks), Mina (Mainnet)",
   };
 
   return (

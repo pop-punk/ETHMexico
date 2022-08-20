@@ -10,17 +10,16 @@ import {
   searchGnosisMainnet,
   searchGnosisTestnet,
 } from "./explorers/searchGnosis";
-
 import {
   searchOptimismMainnet,
   searchOptimismGoerli,
   searchOptimismKovan,
 } from "./explorers/searchOptimism";
-
 import {
   searchArbitrumMainnet,
   searchArbitrumRinkeby,
 } from "./explorers/searchArbitrum";
+import { searchMina } from "./explorers/searchMina";
 
 export const findHash = async (txHash) => {
   const responses = [];
@@ -123,8 +122,17 @@ export const findHash = async (txHash) => {
     }
     return result;
   });
-  responses.push(arbitrumMainnet);
+  responses.push(arbitrumRinkeby);
 
-  const foundTx = responses.find((tx) => tx !== null);
+  const minaMainnet = await searchMina(txHash).then((data) => {
+    let result = data.data.transaction;
+    if (result !== null && result !== 0) {
+      result["protocol"] = "Mina Mainnet";
+    }
+    return result;
+  });
+  responses.push(minaMainnet);
+
+  const foundTx = responses.find((tx) => tx !== null && tx !== 0);
   return foundTx;
 };

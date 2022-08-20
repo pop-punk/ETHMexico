@@ -70,7 +70,7 @@ const Hero = ({
       setLoadingText("Searching for transaction... 🕵️‍♀️");
       const tx = await findHash(hash);
       setLoadingText("");
-      if (tx === 0) {
+      if (tx === undefined) {
         setError("Transaction not found 🥺");
       } else {
         setTableData(tx);
