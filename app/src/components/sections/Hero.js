@@ -37,6 +37,7 @@ const Hero = ({
   const [streamData, setStreamData] = useState(undefined);
   const [loadingText, setLoadingText] = useState("");
   const [error, setError] = useState("");
+  const [scrollUp, setScrollUp] = useState(false);
 
   const outerClasses = classNames(
     "hero section center-content",
@@ -66,6 +67,7 @@ const Hero = ({
   };
 
   async function handleSearch() {
+    setScrollUp(false);
     if (searchType === "Transaction") {
       setError("");
       setRenderTx(false);
@@ -107,11 +109,17 @@ const Hero = ({
     if (ref && setRenderStream) {
       ref.scrollIntoView({ behavior: "smooth", block: "start" });
     }
-  }
+  };
+
+  const scrollToTop = (ref) => {
+    if (ref && scrollUp) {
+      ref.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
 
   return (
     <section {...props} className={outerClasses}>
-      <div className="container-sm">
+      <div className="container-sm" ref={scrollToTop}>
         <div className={innerClasses}>
           <div className="hero-content">
             <h1
@@ -166,9 +174,37 @@ const Hero = ({
             </div>
             <h3 className="blinking text-color-primary">{loadingText}</h3>
             <h3 className="text-color-error">{error}</h3>
-            {renderTx && <div ref={scrollToTx}><TransactionTable tableData={tableData} /></div>}
+            {renderTx && (
+              <div ref={scrollToTx}>
+                <TransactionTable tableData={tableData} />
+                <ButtonGroup>
+                  <Button
+                    tag="a"
+                    color="primary"
+                    wideMobile
+                    onClick={() => setScrollUp(true) && scrollToTop()}
+                  >
+                    Go back up
+                  </Button>
+                </ButtonGroup>
+              </div>
+            )}
           </div>
-          {renderStream && <div ref={scrollToStream}><StreamTable streamData={streamData} /></div>}
+          {renderStream && (
+            <div ref={scrollToStream}>
+              <StreamTable streamData={streamData} />
+              <ButtonGroup>
+                <Button
+                  tag="a"
+                  color="primary"
+                  wideMobile
+                  onClick={() => setScrollUp(true) && scrollToTop()}
+                >
+                  Go back up
+                </Button>
+              </ButtonGroup>
+            </div>
+          )}
         </div>
       </div>
     </section>
