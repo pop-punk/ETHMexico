@@ -30,7 +30,7 @@ const Hero = ({
 }) => {
   const [hash, setHash] = useState("");
   const [placeholder, setPlaceholder] = useState("Transaction Hash");
-  const [searchType, setSearchType] = useState("transaction");
+  const [searchType, setSearchType] = useState("Transaction");
   const [renderTx, setRenderTx] = useState(false);
   const [renderStream, setRenderStream] = useState(false);
   const [tableData, setTableData] = useState(undefined);
@@ -56,15 +56,15 @@ const Hero = ({
   const handleSwitchChange = (event) => {
     if (event.target.checked) {
       setPlaceholder("Superfluid Stream ID");
-      setSearchType("stream");
+      setSearchType("Stream");
     } else {
       setPlaceholder("Transaction Hash");
-      setSearchType("transaction");
+      setSearchType("Transaction");
     }
   };
 
   async function handleSearch() {
-    if (searchType === "transaction") {
+    if (searchType === "Transaction") {
       setError("");
       setRenderTx(false);
       setLoadingText("Searching for transaction... 🕵️‍♀️");

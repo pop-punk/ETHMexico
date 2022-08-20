@@ -19,16 +19,10 @@ const FooterNav = ({
     >
       <ul className="list-reset">
         <li>
-          <Link to="#0">Contact</Link>
+          <a href="https://www.twitter.com/poppunkonchain" target="_blank">@PopPunkOnChain</a>
         </li>
         <li>
-          <Link to="#0">About us</Link>
-        </li>
-        <li>
-          <Link to="#0">FAQ's</Link>
-        </li>
-        <li>
-          <Link to="#0">Support</Link>
+          <a href="https://www.twitter.com/legallyblockchn" target="_blank">@LegallyBlockchn</a>
         </li>
       </ul>
     </nav>
