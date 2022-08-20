@@ -14,8 +14,13 @@ import {
 import {
   searchOptimismMainnet,
   searchOptimismGoerli,
-  searchOptimismKovan
+  searchOptimismKovan,
 } from "./explorers/searchOptimism";
+
+import {
+  searchArbitrumMainnet,
+  searchArbitrumRinkeby,
+} from "./explorers/searchArbitrum";
 
 export const findHash = async (txHash) => {
   const responses = [];
@@ -101,6 +106,24 @@ export const findHash = async (txHash) => {
     return result;
   });
   responses.push(optimismKovan);
+
+  const arbitrumMainnet = await searchArbitrumMainnet(txHash).then((data) => {
+    let result = data;
+    if (result !== null && result !== 0) {
+      result["protocol"] = "Arbitrum Mainnet";
+    }
+    return result;
+  });
+  responses.push(arbitrumMainnet);
+
+  const arbitrumRinkeby = await searchArbitrumRinkeby(txHash).then((data) => {
+    let result = data;
+    if (result !== null && result !== 0) {
+      result["protocol"] = "Arbitrum Rinkeby";
+    }
+    return result;
+  });
+  responses.push(arbitrumMainnet);
 
   const foundTx = responses.find((tx) => tx !== null);
   return foundTx;

@@ -80,10 +80,10 @@ const Hero = ({
     } else {
       setError("");
       setRenderStream(false);
-      setLoadingText("Searching for stream...");
+      setLoadingText("Searching for stream... 🕵️‍♀️");
       const stream = await findStream(hash);
       setLoadingText("");
-      if (stream === 0) {
+      if (stream === undefined) {
         setError("Stream not found 🥺");
       } else {
         setStreamData(stream);
@@ -143,7 +143,7 @@ const Hero = ({
                     wideMobile
                     onClick={() => handleSearch()}
                   >
-                    Hunt {searchType}
+                    Hunt {searchType} 🔎
                   </Button>
                 </ButtonGroup>
               </div>
@@ -151,7 +151,7 @@ const Hero = ({
             <h3 className="blinking">{loadingText}</h3>
             <h3 className="text-color-error">{error}</h3>
             {renderTx && <TransactionTable tableData={tableData} />}
-            {renderStream && <StreamTable tableData={streamData} />}
+            {renderStream && <StreamTable streamData={streamData} />}
           </div>
         </div>
       </div>

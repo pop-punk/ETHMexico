@@ -111,16 +111,13 @@ const Header = ({
                       'list-reset text-xs',
                       navPosition && `header-nav-${navPosition}`
                     )}>
-                    <li>
-                      <Link to="#0" onClick={closeMenu}>Documentation</Link>
-                    </li>
                   </ul>
                   {!hideSignin &&
                     <ul
                       className="list-reset header-nav-right"
                     >
                       <li>
-                        <Link to="#0" className="button button-primary button-wide-mobile button-sm" onClick={closeMenu}>Sign up</Link>
+                        <a href="https://www.github.com/pop-punk/ethmexico" className="button button-primary button-wide-mobile button-sm" target="_blank">💻 View the code</a>
                       </li>
                     </ul>}
                 </div>

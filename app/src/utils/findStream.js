@@ -1,18 +1,30 @@
-import { searchSuperfluidGoerli } from "./explorers/searchSuperfluid";
+import { searchSuperfluid } from "./explorers/searchSuperfluid";
 
 export const findStream = async (txHash) => {
   const responses = [];
+  const protocols = [
+    "arbitrum-one", 
+    "avalanche-fuji",
+    "optimism-kovan",
+    "arbitrum-rinkeby",
+    "mumbai",
+    "goerli",
+    "ropsten",
+    "kovan",
+    "rinkeby"
+  ];
 
-  const superfluidGoerli = await searchSuperfluidGoerli(txHash).then((data) => {
-    let result = data.data.stream;
-    if (result !== null && result !== 0) {
-      result["protocol"] = "Superfluid Goerli";
-    }
-    return result;
-  });
-  responses.push(superfluidGoerli);
+  for (const protocol of protocols) {
+    const stream = await searchSuperfluid(txHash, protocol).then((data) => {
+      let result = data.data.stream;
+      if (result !== null && result !== 0) {
+        result["protocol"] = protocol;
+      }
+      return result;
+    });
+    responses.push(stream);
+  }
 
   const foundStream = responses.find((stream) => stream !== null);
-  console.log(foundStream);
   return foundStream;
 };
