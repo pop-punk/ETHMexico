@@ -22,8 +22,6 @@ import {
 import { searchMina } from "./explorers/searchMina";
 
 export const findHash = async (txHash) => {
-  const responses = [];
-
   const ethMainnet = await searchEthereumMainnet(txHash).then((data) => {
     let result = data;
     if (result !== null && result !== 0) {
@@ -32,7 +30,10 @@ export const findHash = async (txHash) => {
 
     return result;
   });
-  responses.push(ethMainnet);
+
+  if (ethMainnet !== null && ethMainnet !== 0) {
+    return ethMainnet;
+  }
 
   const ethGoerli = await searchEthereumGoerli(txHash).then((data) => {
     let result = data;
@@ -41,7 +42,10 @@ export const findHash = async (txHash) => {
     }
     return result;
   });
-  responses.push(ethGoerli);
+
+  if (ethGoerli !== null && ethGoerli !== 0) {
+    return ethGoerli;
+  }
 
   const polygonMainnet = await searchPolygonMainnet(txHash).then((data) => {
     let result = data;
@@ -50,7 +54,10 @@ export const findHash = async (txHash) => {
     }
     return result;
   });
-  responses.push(polygonMainnet);
+
+  if (polygonMainnet !== null && polygonMainnet !== 0) {
+    return polygonMainnet;
+  }
 
   const polygonMumbia = await searchPolygonMumbai(txHash).then((data) => {
     let result = data;
@@ -59,7 +66,10 @@ export const findHash = async (txHash) => {
     }
     return result;
   });
-  responses.push(polygonMumbia);
+
+  if (polygonMumbia !== null && polygonMumbia !== 0) {
+    return polygonMumbia;
+  }
 
   const gnosisMainnet = await searchGnosisMainnet(txHash).then((data) => {
     let result = data.result;
@@ -68,7 +78,10 @@ export const findHash = async (txHash) => {
     }
     return result;
   });
-  responses.push(gnosisMainnet);
+
+  if (gnosisMainnet !== null && gnosisMainnet !== 0) {
+    return gnosisMainnet;
+  }
 
   const gnosisTestnet = await searchGnosisTestnet(txHash).then((data) => {
     let result = data.result;
@@ -77,7 +90,10 @@ export const findHash = async (txHash) => {
     }
     return result;
   });
-  responses.push(gnosisTestnet);
+
+  if (gnosisTestnet !== null && gnosisTestnet !== 0) {
+    return gnosisTestnet;
+  }
 
   const optimismMainnet = await searchOptimismMainnet(txHash).then((data) => {
     let result = data;
@@ -86,7 +102,10 @@ export const findHash = async (txHash) => {
     }
     return result;
   });
-  responses.push(optimismMainnet);
+
+  if (optimismMainnet !== null && optimismMainnet !== 0) {
+    return optimismMainnet;
+  }
 
   const optimismGoerli = await searchOptimismGoerli(txHash).then((data) => {
     let result = data;
@@ -95,7 +114,10 @@ export const findHash = async (txHash) => {
     }
     return result;
   });
-  responses.push(optimismGoerli);
+
+  if (optimismGoerli !== null && optimismGoerli !== 0) {
+    return optimismGoerli;
+  }
 
   const optimismKovan = await searchOptimismKovan(txHash).then((data) => {
     let result = data;
@@ -104,7 +126,10 @@ export const findHash = async (txHash) => {
     }
     return result;
   });
-  responses.push(optimismKovan);
+
+  if (optimismKovan !== null && optimismKovan !== 0) {
+    return optimismKovan;
+  }
 
   const arbitrumMainnet = await searchArbitrumMainnet(txHash).then((data) => {
     let result = data;
@@ -113,7 +138,10 @@ export const findHash = async (txHash) => {
     }
     return result;
   });
-  responses.push(arbitrumMainnet);
+
+  if (arbitrumMainnet !== null && arbitrumMainnet !== 0) {
+    return arbitrumMainnet;
+  }
 
   const arbitrumRinkeby = await searchArbitrumRinkeby(txHash).then((data) => {
     let result = data;
@@ -122,7 +150,10 @@ export const findHash = async (txHash) => {
     }
     return result;
   });
-  responses.push(arbitrumRinkeby);
+
+  if (arbitrumRinkeby !== null && arbitrumRinkeby !== 0) {
+    return arbitrumRinkeby;
+  }
 
   const minaMainnet = await searchMina(txHash).then((data) => {
     let result = data.data.transaction;
@@ -131,8 +162,10 @@ export const findHash = async (txHash) => {
     }
     return result;
   });
-  responses.push(minaMainnet);
 
-  const foundTx = responses.find((tx) => tx !== null && tx !== 0);
-  return foundTx;
+  if (minaMainnet !== null && minaMainnet !== 0) {
+    return minaMainnet;
+  }
+
+  return undefined;
 };
