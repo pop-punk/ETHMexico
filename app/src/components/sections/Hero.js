@@ -54,6 +54,8 @@ const Hero = ({
   );
 
   const handleSwitchChange = (event) => {
+    setRenderTx(false);
+    setRenderStream(false);
     if (event.target.checked) {
       setPlaceholder("Superfluid Stream ID");
       setSearchType("Stream");
@@ -92,6 +94,18 @@ const Hero = ({
         setRenderStream(true);
         setRenderTx(false);
       }
+    }
+  }
+
+  const scrollToTx = (ref) => {
+    if (ref && setRenderTx) {
+      ref.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
+  const scrollToStream = (ref) => {
+    if (ref && setRenderStream) {
+      ref.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   }
 
@@ -152,9 +166,9 @@ const Hero = ({
             </div>
             <h3 className="blinking text-color-primary">{loadingText}</h3>
             <h3 className="text-color-error">{error}</h3>
-            {renderTx && <TransactionTable tableData={tableData} />}
-            {renderStream && <StreamTable streamData={streamData} />}
+            {renderTx && <div ref={scrollToTx}><TransactionTable tableData={tableData} /></div>}
           </div>
+          {renderStream && <div ref={scrollToStream}><StreamTable streamData={streamData} /></div>}
         </div>
       </div>
     </section>
