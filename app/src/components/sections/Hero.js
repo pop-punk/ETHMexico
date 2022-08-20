@@ -67,6 +67,7 @@ const Hero = ({
     if (searchType === "Transaction") {
       setError("");
       setRenderTx(false);
+      setRenderStream(false);
       setLoadingText("Searching for transaction... 🕵️‍♀️");
       const tx = await findHash(hash);
       setLoadingText("");
@@ -80,6 +81,7 @@ const Hero = ({
     } else {
       setError("");
       setRenderStream(false);
+      setRenderTx(false);
       setLoadingText("Searching for stream... 🕵️‍♀️");
       const stream = await findStream(hash);
       setLoadingText("");
@@ -148,7 +150,7 @@ const Hero = ({
                 </ButtonGroup>
               </div>
             </div>
-            <h3 className="blinking">{loadingText}</h3>
+            <h3 className="blinking text-color-primary">{loadingText}</h3>
             <h3 className="text-color-error">{error}</h3>
             {renderTx && <TransactionTable tableData={tableData} />}
             {renderStream && <StreamTable streamData={streamData} />}
