@@ -91,9 +91,9 @@
 }
 
 .button-primary {
-	color: color(button-primary);
-    background-color: color-bg(button-primary);
-	border-color: color-border(button-primary);
+	color: white;
+    background-color: #1bb8a9;
+	border-color: #1bb8a9;
 
     &:hover {
         background-color: color-bg(button-primary-hover);
