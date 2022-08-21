@@ -77,7 +77,7 @@ const Hero = ({
       const tx = await findHash(hash);
       setLoadingText("");
       if (tx === undefined) {
-        setError("The simulation just went bad 🥺");
+        setError("The simulation just went bad (hash not found) 🥺");
       } else {
         setTableData(tx);
         setRenderTx(true);
