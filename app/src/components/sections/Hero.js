@@ -91,7 +91,7 @@ const Hero = ({
       const stream = await findStream(hash);
       setLoadingText("");
       if (stream === undefined) {
-        setError("The simulation just went bad 🥺");
+        setError("The simulation just went bad (hash not found) 🥺");
       } else {
         setStreamData(stream);
         setRenderStream(true);
