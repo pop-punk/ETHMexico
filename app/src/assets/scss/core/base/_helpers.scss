@@ -92,6 +92,36 @@
 	color: color(success);
 }
 
+.widget-button {
+  background: #abfe2c;
+  padding: 7px 14px;
+  display: flex;
+  align-items: center;
+  color: #00501e;
+  border-radius: 7px;
+  gap: 8px;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.widget-button:hover {
+  background: #aafe2ccb;
+}
+
+.widget-button-large {
+  font-size: 22px;
+}
+
+.widget-button-icon {
+  height: 40px;
+  width: 40px;
+  padding: 0px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .invert-color {
 
 	.text-color-high {
