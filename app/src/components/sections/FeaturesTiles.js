@@ -73,7 +73,7 @@ const FeaturesTiles = ({
                   <h4 className="mt-0 mb-8">About</h4>
                   <p className="m-0 text-sm">
                     HashHunter is a chain agnostic block explorer. Hunt down
-                    hashes from different testnets and mainnets Search
+                    hashes from different testnets and mainnets. Search
                     transactions simply, in one easy explorer.
                   </p>
                 </div>
