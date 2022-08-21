@@ -57,6 +57,7 @@ const Hero = ({
   const handleSwitchChange = (event) => {
     setRenderTx(false);
     setRenderStream(false);
+    setError("");
     if (event.target.checked) {
       setPlaceholder("Superfluid Stream ID");
       setSearchType("Stream");
@@ -76,7 +77,7 @@ const Hero = ({
       const tx = await findHash(hash);
       setLoadingText("");
       if (tx === undefined) {
-        setError("Transaction not found 🥺");
+        setError("The simulation just went bad 🥺");
       } else {
         setTableData(tx);
         setRenderTx(true);
@@ -90,7 +91,7 @@ const Hero = ({
       const stream = await findStream(hash);
       setLoadingText("");
       if (stream === undefined) {
-        setError("Stream not found 🥺");
+        setError("The simulation just went bad 🥺");
       } else {
         setStreamData(stream);
         setRenderStream(true);
@@ -129,12 +130,6 @@ const Hero = ({
               Hash<span className="text-color-primary">Hunter 🔎</span>
             </h1>
             <div className="container-xs">
-              <p
-                className="m-0 mb-32 reveal-from-bottom"
-                data-reveal-delay="400"
-              >
-                Hunt anything, regardless of where it lives.
-              </p>
               <div
                 className="cta-action reveal-from-bottom"
                 data-reveal-delay="600"
