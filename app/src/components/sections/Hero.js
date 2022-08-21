@@ -129,6 +129,9 @@ const Hero = ({
             >
               Hash<span className="text-color-primary">Hunter 🔎</span>
             </h1>
+            <p className="m-0 mb-32 reveal-from-bottom" data-reveal-delay="400">
+              Searching made simple...
+            </p>
             <div className="container-xs">
               <div
                 className="cta-action reveal-from-bottom"
